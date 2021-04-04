@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2021 at 11:47 PM
+-- Generation Time: Apr 04, 2021 at 03:29 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -131,6 +131,34 @@ ALTER TABLE `tipe_kendaraan`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`no_transaksi`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `kendaraan`
+--
+ALTER TABLE `kendaraan`
+  ADD CONSTRAINT `kendaraan_ibfk_1` FOREIGN KEY (`no_plat`) REFERENCES `transaksi` (`no_transaksi`);
+
+--
+-- Constraints for table `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  ADD CONSTRAINT `pelanggan_ibfk_1` FOREIGN KEY (`no_ktp`) REFERENCES `transaksi` (`no_transaksi`);
+
+--
+-- Constraints for table `sopir`
+--
+ALTER TABLE `sopir`
+  ADD CONSTRAINT `sopir_ibfk_1` FOREIGN KEY (`id_sopir`) REFERENCES `transaksi` (`no_transaksi`);
+
+--
+-- Constraints for table `tipe_kendaraan`
+--
+ALTER TABLE `tipe_kendaraan`
+  ADD CONSTRAINT `tipe_kendaraan_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `kendaraan` (`no_plat`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
