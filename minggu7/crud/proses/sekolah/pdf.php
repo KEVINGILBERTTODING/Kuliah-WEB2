@@ -1,4 +1,5 @@
-<?php include '../../conf.php';
+<?php
+include '../../conf.php';
 include '../../conn.php';
 ob_start();
 $hasil = $koneksi->prepare("SELECT * FROM sekolah WHERE id = '" . get('id') . "'");
